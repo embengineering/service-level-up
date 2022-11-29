@@ -14,6 +14,9 @@ export default () => {
         ) : (
           <Typography variant="h3">{'Welcome to Service Level Up!'}</Typography>
         )}
+        <Typography variant="subtitle1">
+          {'Increasing good service has never been as fun!'}
+        </Typography>
       </Stack>
     </main>
   );
