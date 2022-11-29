@@ -6,7 +6,7 @@ import { UserContext, userReducer } from './userContext';
 import Footer from './Footer';
 import { SnackbarProvider } from 'notistack';
 import Main from './Main';
-import { useContext, useReducer } from 'react';
+import { useReducer } from 'react';
 
 export default () => {
   const [userState, userDispatch] = useReducer(userReducer, defaultUserContext);

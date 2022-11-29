@@ -8,8 +8,6 @@ import {
   getRedirectResult,
   signOut
 } from 'firebase/auth';
-import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from './config';
 import { useSnackbar } from 'notistack';
 import { useContext, useEffect } from 'react';
 import { IUser, UserActionType } from './types';
@@ -17,8 +15,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import LoginIcon from '@mui/icons-material/Login';
 import { UserContext } from './userContext';
 
-export default () => {
-  const app = initializeApp(firebaseConfig);
+const Header = () => {
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
 
@@ -109,3 +106,5 @@ export default () => {
     </header>
   );
 };
+
+export default Header;
