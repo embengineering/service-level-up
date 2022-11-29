@@ -8,7 +8,7 @@ export default () => {
 
   return (
     <main>
-      <Stack sx={{ padding: '2rem', textAlign: 'center' }}>
+      <Stack sx={{ padding: '10rem 2rem', textAlign: 'center' }}>
         {userState?.displayName ? (
           <Typography variant="h3">{`Welcome, ${userState?.displayName}`}</Typography>
         ) : (
