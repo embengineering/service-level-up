@@ -1,73 +1,51 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithRedirect, GoogleAuthProvider, getRedirectResult, User } from "firebase/auth";
-import { firebaseConfig } from './config';
-import { useEffect, useState } from 'react';
-import { useSnackbar } from 'notistack';
+import Head from 'next/head';
+import Header from './Header';
+import ThemeProvider from '@mui/material/styles/ThemeProvider';
+import { darkTheme, defaultUserContext } from './types';
+import { UserContext, userReducer } from './userContext';
+import Footer from './Footer';
+import { SnackbarProvider } from 'notistack';
+import Main from './Main';
+import { useContext, useReducer } from 'react';
 
-export default function Home() {
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth();
-  const provider = new GoogleAuthProvider();
-
-  const { enqueueSnackbar } = useSnackbar();
-
-  const [user, setUser] = useState<User>();
-
-  const retrieveAuthAsync = async () => {
-    if (user) return;
-
-    try {
-      const result = await getRedirectResult(auth);
-
-      console.log(result);
-
-      if (!result) {
-        return;
-      }
-
-      setUser(result.user);
-
-    } catch (err) {
-      enqueueSnackbar('Error attempting to authenticate with Google. Try again.');
-    }
-  }
-
-  useEffect(() => {
-    retrieveAuthAsync();
-  }, []);
+export default () => {
+  const [userState, userDispatch] = useReducer(userReducer, defaultUserContext);
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Service Level Up</title>
-        <meta name="description" content="Service Level Up (SLU)" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest"></link>
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to Service Level Up!
-        </h1>
-
-        <p className={styles.description}>
-          Increasing good service has never been as fun!
-        </p>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://www.embengineering.com"
-          target="_blank"
-          rel="noopener noreferrer"
+    <ThemeProvider theme={darkTheme}>
+      <SnackbarProvider maxSnack={1}>
+        <UserContext.Provider
+          value={{ state: userState, dispatch: userDispatch }}
         >
-          Copyright ©️ 2022 EMB Engineering
-        </a>
-      </footer>
-    </div>
-  )
-}
+          <div>
+            <Head>
+              <title>Service Level Up</title>
+              <meta name="description" content="Service Level Up (SLU)" />
+              <link
+                rel="apple-touch-icon"
+                sizes="180x180"
+                href="/apple-touch-icon.png"
+              />
+              <link
+                rel="icon"
+                type="image/png"
+                sizes="32x32"
+                href="/favicon-32x32.png"
+              />
+              <link
+                rel="icon"
+                type="image/png"
+                sizes="16x16"
+                href="/favicon-16x16.png"
+              />
+              <link rel="manifest" href="/site.webmanifest"></link>
+            </Head>
+            <Header />
+            <Main />
+            <Footer />
+          </div>
+        </UserContext.Provider>
+      </SnackbarProvider>
+    </ThemeProvider>
+  );
+};
