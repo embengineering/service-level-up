@@ -10,4 +10,5 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ---
 
 [Demo](https://service-level-up.vercel.app/)
-[Flow Idea](https://miro.com/app/board/uXjVPCf_APk=/?share_link_id=661200331625)
+
+[Flowchart](https://miro.com/app/board/uXjVPCf_APk=/?share_link_id=661200331625)
