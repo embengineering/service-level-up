@@ -1,6 +1,6 @@
 import Stack from '@mui/material/Stack';
 
-export default () => {
+const Footer = () => {
   return (
     <footer>
       <Stack
@@ -26,3 +26,5 @@ export default () => {
     </footer>
   );
 };
+
+export default Footer;

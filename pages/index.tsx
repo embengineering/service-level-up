@@ -8,7 +8,7 @@ import { SnackbarProvider } from 'notistack';
 import Main from './Main';
 import { useReducer } from 'react';
 
-export default () => {
+const Home = () => {
   const [userState, userDispatch] = useReducer(userReducer, defaultUserContext);
 
   return (
@@ -49,3 +49,5 @@ export default () => {
     </ThemeProvider>
   );
 };
+
+export default Home;

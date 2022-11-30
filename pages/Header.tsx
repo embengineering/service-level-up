@@ -14,9 +14,10 @@ import { IUser, UserActionType } from './types';
 import LockIcon from '@mui/icons-material/Lock';
 import LoginIcon from '@mui/icons-material/Login';
 import { UserContext } from './userContext';
+import { firebaseApp } from './firebaseConfig';
 
 const Header = () => {
-  const auth = getAuth();
+  const auth = getAuth(firebaseApp);
   const provider = new GoogleAuthProvider();
 
   const { enqueueSnackbar } = useSnackbar();
