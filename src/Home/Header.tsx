@@ -10,11 +10,11 @@ import {
 } from 'firebase/auth';
 import { useSnackbar } from 'notistack';
 import { useContext, useEffect } from 'react';
-import { IUser, UserActionType } from './types';
+import { IUser, UserActionType } from '../types';
 import LockIcon from '@mui/icons-material/Lock';
 import LoginIcon from '@mui/icons-material/Login';
-import { UserContext } from './userContext';
-import { firebaseApp } from './firebaseConfig';
+import { UserContext } from '../userContext';
+import { firebaseApp } from '../firebaseConfig';
 
 const Header = () => {
   const auth = getAuth(firebaseApp);

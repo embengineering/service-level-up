@@ -1,11 +1,11 @@
 import Head from 'next/head';
-import Header from './Header';
+import Header from '../Home/Header';
 import ThemeProvider from '@mui/material/styles/ThemeProvider';
-import { darkTheme, defaultUserContext } from './types';
-import { UserContext, userReducer } from './userContext';
-import Footer from './Footer';
+import { darkTheme, defaultUserContext } from '../types';
+import { UserContext, userReducer } from '../userContext';
+import Footer from '../Home/Footer';
 import { SnackbarProvider } from 'notistack';
-import Main from './Main';
+import Main from '../Home/Main';
 import { useReducer } from 'react';
 
 const Home = () => {
